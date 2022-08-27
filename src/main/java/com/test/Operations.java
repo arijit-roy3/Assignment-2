@@ -73,27 +73,30 @@ public class Operations {
     }
 
     public List<Player> updateByName(List<Player> list) throws PlayerNotFoundException {
-        try{
-            String name= sc.next();
-            boolean flag=false;
-            for(Player p:list){
-                if(p.getName().equalsIgnoreCase(name)){
-                    System.out.println("Updating Info");
-                    System.out.println("Enter Matches, Runs, Wickets, Ducks, Type");
-                    p.setMatches(sc.nextInt());
-                    p.setRuns(sc.nextInt());
-                    p.setWickets(sc.nextInt());
-                    p.setDuck(sc.nextInt());
-                    p.setType(sc.next());
-                    flag=true;
-                }
+        System.out.println("Enter player's name");
+        String name= sc.next();
+        boolean flag=false;//not found
+        for(Player p:list){
+            if(p.getName().equalsIgnoreCase(name)){
+                System.out.println("Updating Info");
+                System.out.println("Enter Matches, Runs, Wickets, Ducks, Type");
+                p.setMatches(sc.nextInt());
+                p.setRuns(sc.nextInt());
+                p.setWickets(sc.nextInt());
+                p.setDuck(sc.nextInt());
+                p.setType(sc.next());
+                flag=true;
                 break;
             }
-            if(flag=false)
-                throw new PlayerNotFoundException("Player not found");
-        }catch (Exception e){
-            e.printStackTrace();
         }
+        if(flag==false){
+            try{
+                throw new PlayerNotFoundException("Player not found!!!!");
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
         return list;
     }
 
