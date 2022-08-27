@@ -20,6 +20,7 @@ public class Operations {
 //            list.add(p);
 //        }
 //        return list;
+        //The following code is for testing
         Player p1=new Player(1,"A",10,100,1,0,"Batsman");
         list.add(p1);
         Player p2=new Player(2,"B",11,1111,1,1,"Batsman");
@@ -97,6 +98,7 @@ public class Operations {
     }
 
     public void displayFinalTeam(List<Player> list) {
+        list=selectTeam(list);
         list.sort((o1,o2)->o1.getName().compareTo(o2.getName()));
         System.out.println("ID\tName\tMatches Played\tRuns Scored\tWickets Taken\tDucks\tPlayer Type");
         for(Player p:list){
