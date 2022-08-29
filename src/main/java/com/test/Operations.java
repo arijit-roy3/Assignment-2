@@ -68,7 +68,7 @@ public class Operations {
         list.sort((o1,o2)->o1.getName().compareTo(o2.getName()));
         System.out.println("ID\tName\tMatches Played\tRuns Scored\tWickets Taken\tDucks\tPlayer Type");
         for(Player p:list){
-            System.out.println(p.getId()+"\t"+p.getName()+"\t"+p.getMatches()+"\t"+p.getRuns()+"\t"+p.getWickets()+"\t"+p.getDuck()+"\t"+p.getType());
+            System.out.println(p.getId()+"\t\t"+p.getName()+"\t\t"+p.getMatches()+"\t\t\t"+p.getRuns()+"\t\t"+p.getWickets()+"\t\t\t"+p.getDuck()+"\t\t"+p.getType());
         }
     }
 
@@ -84,7 +84,8 @@ public class Operations {
                 p.setRuns(sc.nextInt());
                 p.setWickets(sc.nextInt());
                 p.setDuck(sc.nextInt());
-                p.setType(sc.next());
+                String type=sc.next();
+                p.setType(type);
                 flag=true;
                 break;
             }
@@ -105,7 +106,7 @@ public class Operations {
         list.sort((o1,o2)->o1.getName().compareTo(o2.getName()));
         System.out.println("ID\tName\tMatches Played\tRuns Scored\tWickets Taken\tDucks\tPlayer Type");
         for(Player p:list){
-            System.out.println(p.getId()+"\t"+p.getName()+"\t"+p.getMatches()+"\t"+p.getRuns()+"\t"+p.getWickets()+"\t"+p.getDuck()+"\t"+p.getType());
+            System.out.println(p.getId()+"\t\t"+p.getName()+"\t\t"+p.getMatches()+"\t\t\t"+p.getRuns()+"\t\t"+p.getWickets()+"\t\t\t"+p.getDuck()+"\t\t"+p.getType());
         }
     }
 
@@ -146,8 +147,18 @@ public class Operations {
         }
         //add n bowlers
         Iterator<Map.Entry<Float, Player>> itr2=mapBowler.entrySet().iterator();
-        System.out.println("Enter the no of Bowlers Minimum 3");
-        int n= sc.nextInt();
+        System.out.println("Enter the no of Bowlers Minimum 3 Maximum "+mapBowler.size());
+        boolean isBowlerValidated=false;
+        int n=3;//default value is 3
+        while (isBowlerValidated!=true){
+            n= sc.nextInt();
+            if(n>=3 && n<=mapBowler.size())
+                isBowlerValidated=true;
+            else{
+                System.out.println("Wrong input!!!");
+            }
+        }
+        //validation of this input is required
         int count =1;
         while(itr2.hasNext()){
             entry= itr2.next();
